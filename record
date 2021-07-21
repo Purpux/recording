@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # global settings
-resolution="1920x1080"
+resolution="1366x768"
 fps="24"
 quality="0"
 preset="medium"
@@ -39,7 +39,7 @@ $1
 # a few things to note:
 # I have no idea what the -g $fps does, but im keeping it there incase something breaks 
 # doing -framerate and -r gives me a good quality and consistency with a medium load average
-# doing -r first then -framerate gives me a fever dream with high framerates, high load averages and the most fluctuating movement I have seen in minecraft
+# doing -r first then -framerate gives me a fever dream with high framerates, high load averages and the most fluctuating movement I have seen in minecraft, or a recording in general
 
 # Additional options that might be valid now or in the future
 #-af acontrast \
@@ -50,4 +50,3 @@ $1
 #-minrate 4M \
 #
 # -af acompressor=threshold=0.089:ratio=9:attack=200:release=1000 \
-# "sftp://khail:pki7692gi@192.168.2.2/home/khail/Videos/$1"
