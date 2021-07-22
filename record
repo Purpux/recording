@@ -2,9 +2,9 @@
 
 # global settings
 resolution="1366x768"
-fps="24"
+fps="30"
 quality="0"
-preset="medium"
+preset="superfast"
 codec="libx264rgb"
 threads="2"
 scale="1280x720"
@@ -13,26 +13,21 @@ scale="1280x720"
 # actual ffmpeg command
 ffmpeg \
 \
-\
 -threads $threads \
 \
 -f x11grab \
 -video_size $resolution \
--framerate $fps -g $fps\
--i :0.0 \
+-framerate $fps \
+-thread_queue_size 1024 \
+-i $DISPLAY \
 \
-\
--f pulse -i default \
--af acontrast=contrast=0 \
-\
-\
+-f pulse \
+-i default \
 \
 -vf scale=$scale \
--c:v $codec \
+-c:v $codec -g $fps \
 -preset $preset \
 -r $fps \
-\
-\
 \
 $1
 
@@ -50,3 +45,5 @@ $1
 #-minrate 4M \
 #
 # -af acompressor=threshold=0.089:ratio=9:attack=200:release=1000 \
+
+# -f pulse -i default \
