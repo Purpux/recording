@@ -21,6 +21,7 @@ ffmpeg \
 -thread_queue_size 1024 \
 -i $DISPLAY \
 \
+-use_wallclocks_as_timestamps 1 \
 -f pulse \
 -i default \
 \
