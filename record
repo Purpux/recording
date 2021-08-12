@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # global settings
-resolution="1366x768"
-fps="30"
+resolution="1920x1080"
+fps="24"
 quality="0"
 preset="superfast"
 codec="libx264rgb"
@@ -30,7 +30,7 @@ ffmpeg \
 -preset $preset \
 -r $fps \
 \
--af contrast=0 \
+-acodec copy \
 \
 $1
 
@@ -40,7 +40,7 @@ $1
 # doing -r first then -framerate gives me a fever dream with high framerates, high load averages and the most fluctuating movement I have seen in minecraft, or a recording in general
 
 # Additional options that might be valid now or in the future
-#-af contrast \
+#-af acontrast=0 \
 #-tune $tune \
 # -hwaccel auto \
 #-crf $quality \
@@ -50,3 +50,5 @@ $1
 # -af acompressor=threshold=0.089:ratio=9:attack=200:release=1000 \
 
 # -f pulse -i default \
+# acompressor=threshold=0.089:ratio=9:attack=200:release=1000 \
+# -af acontrast=0 \
