@@ -39,17 +39,16 @@ $1
 # doing -r first then -framerate gives me a fever dream with high framerates, high load averages and the most fluctuating movement I have seen in minecraft, or a recording in general
 
 # Additional options that might be valid now or in the future
-#-af acontrast=0 \
-#-tune $tune \
-# -hwaccel auto \
-#-crf $quality \
-#-b:v 4M \
-#-minrate 4M \
-#
-# -af acompressor=threshold=0.089:ratio=9:attack=200:release=1000 \
+#-af acontrast=0 \ should reduce contrast to reduce background noise, but I have found that it makes little difference 
 
-# -f pulse -i default \
-# acompressor=threshold=0.089:ratio=9:attack=200:release=1000 \
-# -af acontrast=0 \
+#-tune $tune \ tune overides all other settings, do not recommend
+
+# -hwaccel auto \ for auto detecting hardware for acceleration. Unrecommended if you have an integrated GPU 
+
+#-crf $quality \ unreliable, makes little difference
+#-b:v 4M \ bit rate for video
+#-minrate 4M \ minimum bit rate for video 
 #
-# -use_wallclock_as_timestamps 1 \
+# -af acompressor=threshold=0.089:ratio=9:attack=200:release=1000 \ picks up too much background noise to be useful. Perfect for silent rooms and studios
+
+# -use_wallclock_as_timestamps 1 \ no idea what it actually does, but it stops the error, Queue Input is delayed in time.
