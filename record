@@ -21,7 +21,6 @@ ffmpeg \
 -thread_queue_size 1024 \
 -i $DISPLAY \
 \
--use_wallclock_as_timestamps 1 \
 -f pulse \
 -i default \
 \
@@ -30,7 +29,7 @@ ffmpeg \
 -preset $preset \
 -r $fps \
 \
--acodec copy \
+-c:a aac \
 \
 $1
 
@@ -52,3 +51,5 @@ $1
 # -f pulse -i default \
 # acompressor=threshold=0.089:ratio=9:attack=200:release=1000 \
 # -af acontrast=0 \
+#
+# -use_wallclock_as_timestamps 1 \
