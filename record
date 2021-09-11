@@ -34,6 +34,7 @@ ffmpeg \
 $1
 
 # a few things to note:
+
 # I have no idea what the -g $fps does, but im keeping it there incase something breaks 
 # doing -framerate and -r gives me a good quality and consistency with a medium load average
 # doing -r first then -framerate gives me a fever dream with high framerates, high load averages and the most fluctuating movement I have seen in minecraft, or a recording in general
