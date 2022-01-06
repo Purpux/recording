@@ -15,20 +15,9 @@ ffmpeg \
 \
 -threads $threads \
 \
--f x11grab \
--video_size $resolution \
--framerate $fps \
--thread_queue_size 1024 \
--i $DISPLAY \
-\
 -f alsa \
 -ac 1 \
 -i hw:$1 \
-\
--vf scale=$scale \
--c:v $codec -g $fps \
--preset $preset \
--r $fps \
 \
 -c:a aac \
 \
@@ -37,6 +26,7 @@ $2
 # a few things to note:
 
 # I have no idea what the -g $fps does, but im keeping it there incase something breaks 
+
 # doing -framerate and -r gives me a good quality and consistency with a medium load average
 # doing -r first then -framerate gives me a fever dream with high framerates, high load averages and the most fluctuating movement I have seen in minecraft, or a recording in general
 
@@ -47,9 +37,20 @@ $2
 
 # -hwaccel auto \ for auto detecting hardware for acceleration. Unrecommended if you have an integrated GPU 
 
-#-crf $quality \ unreliable, makes little difference
+#-crf $quality \ unreliable, makes little difference with lower end stuff
 #-b:v 4M \ bit rate for video
 #-minrate 4M \ minimum bit rate for video 
 #
 # -af acompressor=threshold=0.089:ratio=9:attack=200:release=1000 \ picks up too much background noise to be useful. Perfect for silent rooms and studios
 # -use_wallclock_as_timestamps 1 \ no idea what it actually does, but it stops the error, Queue Input is delayed in time.
+
+# -f x11grab \
+# -video_size $resolution \
+# -framerate $fps \
+# -thread_queue_size 1024 \
+# -i $DISPLAY \
+
+# -vf scale=$scale \
+# -c:v $codec -g $fps \
+# -preset $preset \
+# -r $fps \

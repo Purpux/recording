@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This is for pulseaudio + X11 instead of wayland + alsa or wayland + pipewire
+
 # global settings
 resolution="1920x1080"
 fps="24"
@@ -51,4 +53,4 @@ $1
 #-minrate 4M \ minimum bit rate for video 
 #
 # -af acompressor=threshold=0.089:ratio=9:attack=200:release=1000 \ picks up too much background noise to be useful. Perfect for silent rooms and studios
-# -use_wallclock_as_timestamps 1 \ no idea what it actually does, but it stops the error, Queue Input is delayed in time.
+# -use_wallclock_as_timestamps 1 \ no idea what it actually does, but it stops the error, Queue Input is delayed in time. If you get this erro, add this option
