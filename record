@@ -5,8 +5,8 @@ resolution="1920x1080"
 fps="24"
 quality="0"
 preset="superfast"
-codec="libx264rgb"
-threads="2"
+codec="h264_vaapi"
+threads="4"
 scale="1280x720"
 # tune="zerolatency"
 
@@ -15,9 +15,17 @@ ffmpeg \
 \
 -threads $threads \
 \
+-f kmsgrab \
+-thread_queue_size 1024 \
+-framerate $fps \
+-i - \
+\
 -f alsa \
 -ac 1 \
 -i hw:$1 \
+\
+-vf 'hwmap=derive_device=vaapi,scale_vaapi=w=1920:h=1080:format=nv12' \
+-c:v $codec \
 \
 -c:a aac \
 \
@@ -25,7 +33,7 @@ $2
 
 # a few things to note:
 
-# I have no idea what the -g $fps does, but im keeping it there incase something breaks 
+# I have no idea what the -g $fps does, but im keeping it there incase something breaks
 
 # doing -framerate and -r gives me a good quality and consistency with a medium load average
 # doing -r first then -framerate gives me a fever dream with high framerates, high load averages and the most fluctuating movement I have seen in minecraft, or a recording in general
@@ -54,3 +62,6 @@ $2
 # -c:v $codec -g $fps \
 # -preset $preset \
 # -r $fps \
+# -preset $preset \
+
+# 
